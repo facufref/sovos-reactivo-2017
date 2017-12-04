@@ -26,9 +26,6 @@ class App extends React.Component {
         {nombre: 'Facundo Esquivel Fagiani', dni: '36182504', direccion: 'calle 123', fechaNac:'24-12-1992', estado:'Regular'},
         {nombre: 'Facundo Esquivel Fagiani', dni: '36182504', direccion: 'calle 123', fechaNac:'24-12-1992', estado:'Regular'},
         {nombre: 'Facundo Esquivel Fagiani', dni: '36182504', direccion: 'calle 123', fechaNac:'24-12-1992', estado:'Regular'},
-        {nombre: 'Facundo Esquivel Fagiani', dni: '36182504', direccion: 'calle 123', fechaNac:'24-12-1992', estado:'Regular'},
-        {nombre: 'Facundo Esquivel Fagiani', dni: '36182504', direccion: 'calle 123', fechaNac:'24-12-1992', estado:'Regular'},
-        {nombre: 'Facundo Esquivel Fagiani', dni: '36182504', direccion: 'calle 123', fechaNac:'24-12-1992', estado:'Regular'}
       ]
     }
   }
@@ -47,7 +44,11 @@ class App extends React.Component {
             <Route path="/about" component={AboutPage} />
             <Route 
                 path="/alumnos" 
-                render={(props) => <AlumnosPage agregarAlumno={this.handleAgregarAlumno}/>}
+                render={(props) => <AlumnosPage 
+                  alumnos={this.state.alumnos} 
+                  agregarAlumno={this.handleAgregarAlumno} 
+                  {...props} 
+                  />}
             />
             <Route component={NotFoundPage} />
           </Switch>

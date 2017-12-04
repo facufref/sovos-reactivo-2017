@@ -2,15 +2,17 @@ import React from 'react';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import AddCircleOutlineIcon from 'material-ui-icons/AddCircleOutline';
 import IconButton from 'material-ui/IconButton';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const AlumnoListado = (props) => {
   return (
     <div>
       <h2>Listado de Alumno </h2>
-      <IconButton tooltip="Agregar Alumno" href='./alumnos-form'>
-        <AddCircleOutlineIcon/>
-      </IconButton>
+      <NavLink to="/alumnos/form">
+        <IconButton tooltip="Agregar Alumno" href='./alumnos-form'>
+          <AddCircleOutlineIcon/>
+        </IconButton>
+      </NavLink>
       <Table>
         <TableHeader>
           <TableRow>
