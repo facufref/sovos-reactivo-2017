@@ -7,14 +7,30 @@ import AlumnoForm from './components/form/AlumnoForm';
 class AlumnosPage extends React.Component {
   constructor(){
     super();
+    this.handleCancelar = this.handleCancelar.bind(this);
   }
+
+  handleCancelar = () => {
+    this.context.router.transitionTo('/alumnos');
+  };
+  
   render() {
     return (
       <div>
         <div>
           <Switch >
-            <Route exact path="/" component={AlumnoListado} />
-            <Route path="/form" component={AlumnoForm} />
+            <Route 
+                path={`${this.props.match.path}/`} 
+                render={(props) => <AlumnoListado alumnos={this.state.alumnos}/>} 
+            />
+            <Route 
+                path={`${this.props.match.path}/form`} 
+                render={(props) => <AlumnoForm 
+                    agregarAlumno={this.props.agregarAlumno} 
+                    cancelar={this.handleCancelar}
+                  />
+                  }
+            />
           </Switch>
         </div>
       </div>

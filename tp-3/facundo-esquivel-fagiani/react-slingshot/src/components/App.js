@@ -20,7 +20,6 @@ class App extends React.Component {
     super();
 
     this.handleAgregarAlumno = this.handleAgregarAlumno.bind(this);
-    this.handleCancelar = this.handleCancelar.bind(this);
 
     this.state = {
       alumnos:[
@@ -34,20 +33,10 @@ class App extends React.Component {
     }
   }
 
-  handleAgregarAlumno(newNombre, newDni, newDireccion, newFechaNac, newEstado){
-    this.state.alumnos.push({
-      nombre: newNombre, 
-      dni: newDni, 
-      direccion: newDireccion, 
-      fechaNac: newFechaNac, 
-      estado: newEstado
-    });  
+  handleAgregarAlumno(alumno){
+    this.state.alumnos.push(alumno);  
   }
-
-  handleCancelar = () => {
-    this.context.router.transitionTo('/alumnos');
-  };
-  
+    
   render() {
     return (
       <div className="app">
@@ -56,18 +45,9 @@ class App extends React.Component {
           <Switch >
             <Route exact path="/" component={WelcomePage} />
             <Route path="/about" component={AboutPage} />
-            {/* <Route path="/alumnos" component={AlumnosPage} /> */}
             <Route 
                 path="/alumnos" 
-                render={(props) => <AlumnoListado alumnos={this.state.alumnos}/>} 
-            />
-            <Route 
-                path="/alumnos-form" 
-                render={(props) => <AlumnoForm 
-                    agregarAlumno={this.handleAgregarAlumno} 
-                    cancelar={this.handleCancelar}
-                  />
-                  }
+                render={(props) => <AlumnosPage agregarAlumno={this.handleAgregarAlumno}/>}
             />
             <Route component={NotFoundPage} />
           </Switch>
